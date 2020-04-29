@@ -2,11 +2,11 @@ package audienceAppPageObjects;
 
 import org.openqa.selenium.WebDriver;
 
-public class GoalsPage {
+public class AudienceAppUATGoalsPage {
 	public WebDriver driver;
 
 	
-	public GoalsPage(WebDriver driver) {
+	public AudienceAppUATGoalsPage(WebDriver driver) {
 		this.driver = driver;
 	}
 

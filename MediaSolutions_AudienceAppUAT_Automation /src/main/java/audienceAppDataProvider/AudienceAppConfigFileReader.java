@@ -1,4 +1,4 @@
-package dataProvider;
+package audienceAppDataProvider;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -9,12 +9,12 @@ import java.util.Properties;
 import audienceAppEnums.DriverTtype;
 import audienceAppEnums.EnvironMentType;
 
-public class ConfigFileReader {
+public class AudienceAppConfigFileReader {
 
 	private Properties properties;
 	private final String propertyFilePath = "configs//Configuration.properties";
 
-	public ConfigFileReader() {
+	public AudienceAppConfigFileReader() {
 		BufferedReader reader;
 		try {
 			reader = new BufferedReader(new FileReader(propertyFilePath));
@@ -51,20 +51,12 @@ public class ConfigFileReader {
 		return 30;
 	}
 
-	public String getApplicationUrl() {
-		String SignUpURL = properties.getProperty("SignUpURL");
-		if (SignUpURL != null)
-			return SignUpURL;
-		else
-			throw new RuntimeException("SignUpURL not specified in the Configuration.properties file.");
-	}
-
-	public String getLoginURL() {
-		String LogInURL = properties.getProperty("LogInURL");
+	public String getApplicationLoginURL() {
+		String LogInURL = properties.getProperty("audienceAppUATLogInURL");
 		if (LogInURL != null)
 			return LogInURL;
 		else
-			throw new RuntimeException("SignUpURL not specified in the Configuration.properties file.");
+			throw new RuntimeException("LogInURL not specified in the Configuration.properties file.");
 	}
 
 	public DriverTtype getBrowser() {

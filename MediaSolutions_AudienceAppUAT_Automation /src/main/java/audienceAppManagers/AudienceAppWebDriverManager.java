@@ -7,22 +7,21 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
-
 import audienceAppEnums.DriverTtype;
 import audienceAppEnums.EnvironMentType;
 
-public class WebDriverManager  {
+public class AudienceAppWebDriverManager {
 	
 	public static WebDriver driver;
-	//private  WebDriver driver;
+	//private WebDriver driver;
 	//protected WebDriver driver;
 	private static DriverTtype driverType;
 	private static EnvironMentType environmentType;
 	private static final String CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver";
 
-	public WebDriverManager() {
-		driverType = FileReaderManager.getInstance().getConfigReader().getBrowser();
-		environmentType = FileReaderManager.getInstance().getConfigReader().getEnvironment();
+	public AudienceAppWebDriverManager() {
+		driverType = AudienceAppFileReaderManager.getInstance().getConfigReader().getBrowser();
+		environmentType = AudienceAppFileReaderManager.getInstance().getConfigReader().getEnvironment();
 	}
 
 	public static  WebDriver getDriver() {
@@ -54,7 +53,7 @@ public class WebDriverManager  {
 			break;
 		case CHROME:
 			System.setProperty(CHROME_DRIVER_PROPERTY,
-					FileReaderManager.getInstance().getConfigReader().getDriverPath());
+					AudienceAppFileReaderManager.getInstance().getConfigReader().getDriverPath());
 			driver = new ChromeDriver();
 			break;
 		case IE:
@@ -65,14 +64,14 @@ public class WebDriverManager  {
 			break;
 		}
 
-		if (FileReaderManager.getInstance().getConfigReader().getBrowserWindowSize())
+		if (AudienceAppFileReaderManager.getInstance().getConfigReader().getBrowserWindowSize())
 			driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigReader().getImplicitlyWait(),
+		driver.manage().timeouts().implicitlyWait(AudienceAppFileReaderManager.getInstance().getConfigReader().getImplicitlyWait(),
 				TimeUnit.SECONDS);
 		return driver;
 	}
 
-	public  void closeDriver() {
+	public void closeDriver() {
 		driver.close();
 		//driver.quit();
 	}
