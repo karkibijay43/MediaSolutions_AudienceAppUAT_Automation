@@ -3,11 +3,10 @@ package audienceAppPageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import adPortalDataProvider.ConfigFileReader;
+import audienceAppDataProvider.AudienceAppConfigFileReader;
 
 public class AudienceAppUATLogInPage {
-	ConfigFileReader configFileReader;
+	AudienceAppConfigFileReader audienceAppConfigFileReader;
 	public WebDriver driver;
 	String audienceAppUATLogInURL = "https://uat01.omniapp.tv/#/login";
 	By txtBox_LogInEmail = By.id("user.name");
@@ -19,7 +18,7 @@ public class AudienceAppUATLogInPage {
 	
 	public AudienceAppUATLogInPage(WebDriver driver) {
 		this.driver = driver;
-		configFileReader = new ConfigFileReader();
+		audienceAppConfigFileReader = new AudienceAppConfigFileReader();
 
 	}
 
